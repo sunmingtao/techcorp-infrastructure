@@ -9,9 +9,9 @@ This is the **TechCorp Infrastructure Project** - a hands-on learning environmen
 ## Architecture
 
 **3-Server Consolidated Architecture:**
-- **tc-frontend** (Ubuntu 22.04): nginx load balancer + Apache web server
-- **tc-backend** (RHEL 9): PostgreSQL database + application services  
-- **tc-ops** (CentOS Stream 9): Prometheus/Grafana monitoring + backup services + dev tools
+- **tc-frontend** (Ubuntu 22.04): nginx load balancer + Apache web server + Squid proxy
+- **tc-backend** (RHEL 9): PostgreSQL primary database + application services  
+- **tc-ops** (CentOS Stream 9): PostgreSQL standby replica + Prometheus/Grafana monitoring + backup services + dev tools
 
 This multi-distro setup provides experience with different package managers (apt, dnf, zypper) and system administration approaches.
 
@@ -37,9 +37,10 @@ Terraform outputs SSH commands for each server:
 
 **Current Infrastructure Status:**
 - All 3 servers deployed and operational
-- Frontend: 54.242.140.75 (public)
-- Backend: 10.2.2.252 (private)
-- Ops: 10.2.2.97 (private)
+- Frontend: 54.242.140.75 (public) - Proxy configured for private subnet internet access
+- Backend: 10.2.2.252 (private) - PostgreSQL primary with streaming replication
+- Ops: 10.2.2.97 (private) - PostgreSQL standby replica
+- Database Replication: Active streaming replication between backend (primary) and ops (standby)
 
 ## Project Phases Structure
 

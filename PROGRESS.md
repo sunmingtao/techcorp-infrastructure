@@ -29,6 +29,7 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 - [x] **Squid Proxy Setup on Frontend**
   - Configured Squid proxy to allow backend internet access
   - Cost-effective alternative to AWS NAT Gateway
+  - Extended proxy configuration to tc-ops server
 - [x] **Static IP Configuration on Backend**
   - Configured static IP (maintained AWS-assigned address)
 
@@ -50,6 +51,13 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 - [x] **PostgreSQL Installation on Backend**
   - Successfully installed and configured PostgreSQL
   - Database mounted on LVM volume at `/var/lib/postgresql`
+  - Created application user and replication user
+  - Configured postgresql.conf for replication (wal_level, max_wal_senders, listen_addresses)
+- [x] **PostgreSQL Streaming Replication**
+  - Configured primary (tc-backend) for replication
+  - Set up standby replica on tc-ops using pg_basebackup
+  - Verified streaming replication is working (walreceiver process active)
+  - Tested data replication from primary to standby
 
 ### Troubleshooting Experience
 
@@ -61,15 +69,25 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Resolved authentication configuration issues
   - Gained experience with PostgreSQL auth methods
 
+#### Resolved Issues  
+- [x] **PostgreSQL pg_hba.conf Authentication**
+  - Learned about pg_hba.conf authentication methods
+  - Added trust authentication for local postgres user admin tasks
+- [x] **Shell Quoting in sed Commands**
+  - Discovered issue with special characters in double-quoted sed expressions
+  - Learned proper escaping techniques for complex sed patterns
+
 ## Current Status
 - Infrastructure: All 3 servers operational
 - Frontend Server (Ubuntu 22.04): nginx + Apache running
-- Backend Server (RHEL 9): PostgreSQL operational with LVM storage
-- Ops Server (CentOS Stream 9): Deployed and ready for configuration
-- Network: Proxy configuration working
+- Backend Server (RHEL 9): PostgreSQL primary with streaming replication
+- Ops Server (CentOS Stream 9): PostgreSQL standby replica receiving streaming updates
+- Network: Proxy configuration working on all servers
+- Database Replication: Active streaming replication from backend to ops
 
 ## Next Steps
-- [ ] Configure tc-ops server for monitoring and backup services
-- [ ] Set up PostgreSQL replication between backend (primary) and ops (standby)
-- [ ] Complete remaining Phase 2 tasks (logging, monitoring, systemd services)
+- [ ] Configure tc-ops server for Prometheus/Grafana monitoring
+- [ ] Set up centralized logging with rsyslog
+- [ ] Create custom systemd services
+- [ ] Configure automated backups on tc-ops
 - [ ] Begin Phase 3: Security Hardening
