@@ -31,9 +31,15 @@ terraform destroy
 
 ### Server Access
 Terraform outputs SSH commands for each server:
-- Frontend: `ssh -i ~/.ssh/key.pem ubuntu@<public-ip>`
-- Backend: `ssh -i ~/.ssh/key.pem ec2-user@<private-ip>` (via frontend)
-- Ops: `ssh -i ~/.ssh/key.pem ec2-user@<private-ip>` (via frontend)
+- Frontend: `ssh -i ~/.ssh/techcorp-key.pem ubuntu@54.242.140.75`
+- Backend: `ssh -i ~/.ssh/techcorp-key.pem ec2-user@10.2.2.252` (via frontend)
+- Ops: `ssh -i ~/.ssh/techcorp-key.pem ec2-user@10.2.2.97` (via frontend)
+
+**Current Infrastructure Status:**
+- All 3 servers deployed and operational
+- Frontend: 54.242.140.75 (public)
+- Backend: 10.2.2.252 (private)
+- Ops: 10.2.2.97 (private)
 
 ## Project Phases Structure
 

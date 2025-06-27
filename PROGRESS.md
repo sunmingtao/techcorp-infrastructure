@@ -8,8 +8,12 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 ### Infrastructure Setup
 - [x] **Terraform Infrastructure Deployment**
   - Successfully deployed AWS infrastructure using Terraform
-  - Created 2 EC2 instances: tc-frontend and tc-backend
+  - Created 3 EC2 instances: tc-frontend, tc-backend, and tc-ops
   - Configured security groups and networking
+  - Server IPs:
+    - tc-frontend: 54.242.140.75 (public)
+    - tc-backend: 10.2.2.252 (private)
+    - tc-ops: 10.2.2.97 (private)
 
 ### Phase 1: Foundation Infrastructure
 
@@ -58,12 +62,14 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Gained experience with PostgreSQL auth methods
 
 ## Current Status
-- Infrastructure: Operational
-- Frontend Server: nginx + Apache running
-- Backend Server: PostgreSQL operational with LVM storage
+- Infrastructure: All 3 servers operational
+- Frontend Server (Ubuntu 22.04): nginx + Apache running
+- Backend Server (RHEL 9): PostgreSQL operational with LVM storage
+- Ops Server (CentOS Stream 9): Deployed and ready for configuration
 - Network: Proxy configuration working
 
 ## Next Steps
+- [ ] Configure tc-ops server for monitoring and backup services
+- [ ] Set up PostgreSQL replication between backend (primary) and ops (standby)
 - [ ] Complete remaining Phase 2 tasks (logging, monitoring, systemd services)
 - [ ] Begin Phase 3: Security Hardening
-- [ ] Set up tc-ops server (not yet deployed)
