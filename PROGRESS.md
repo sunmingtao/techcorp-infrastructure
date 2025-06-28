@@ -59,6 +59,14 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Verified streaming replication is working (walreceiver process active)
   - Tested data replication from primary to standby
 
+#### Logging Services
+- [x] **Central Log Server Setup on tc-ops**
+  - Configured rsyslog to receive logs on TCP/UDP port 514
+  - Created remote log directory structure (/var/log/remote)
+  - Installed and configured firewalld for log traffic
+  - Verified rsyslog is listening on both protocols
+  - Ready to receive logs from client servers
+
 ### Troubleshooting Experience
 
 #### Resolved Issues
@@ -76,18 +84,32 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 - [x] **Shell Quoting in sed Commands**
   - Discovered issue with special characters in double-quoted sed expressions
   - Learned proper escaping techniques for complex sed patterns
+- [x] **Package Discovery Methods**
+  - Learned to use `dnf provides` to find which package provides a command
+  - Used `dnf provides firewall-cmd` to discover firewalld package
+  - Important skill for finding packages without external resources
+- [x] **SELinux Context Inheritance**
+  - Discovered that new directories inherit parent's SELinux context
+  - Learned when explicit semanage rules are needed (persistence, system relabeling)
+  - Understood var_log_t context for log directories
 
 ## Current Status
 - Infrastructure: All 3 servers operational
 - Frontend Server (Ubuntu 22.04): nginx + Apache running
 - Backend Server (RHEL 9): PostgreSQL primary with streaming replication
-- Ops Server (CentOS Stream 9): PostgreSQL standby replica receiving streaming updates
+- Ops Server (CentOS Stream 9): 
+  - PostgreSQL standby replica receiving streaming updates
+  - Central rsyslog server configured and listening on port 514
+  - Firewalld configured to allow log traffic
 - Network: Proxy configuration working on all servers
 - Database Replication: Active streaming replication from backend to ops
+- Logging: Central log server ready, client configuration pending
 
 ## Next Steps
+- [ ] Configure log forwarding from tc-frontend to tc-ops
+- [ ] Configure log forwarding from tc-backend to tc-ops
+- [ ] Test centralized logging with custom log entries
 - [ ] Configure tc-ops server for Prometheus/Grafana monitoring
-- [ ] Set up centralized logging with rsyslog
 - [ ] Create custom systemd services
 - [ ] Configure automated backups on tc-ops
 - [ ] Begin Phase 3: Security Hardening
