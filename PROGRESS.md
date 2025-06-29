@@ -66,6 +66,12 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Installed and configured firewalld for log traffic
   - Verified rsyslog is listening on both protocols
   - Ready to receive logs from client servers
+- [x] **Log Forwarding Configuration**
+  - Configured tc-frontend to forward logs to tc-ops via TCP (@@)
+  - Configured tc-backend to forward logs to tc-ops via TCP
+  - Tested logging from both servers with logger command
+  - Verified logs are organized by hostname in /var/log/remote/
+  - Full centralized logging now operational
 
 ### Troubleshooting Experience
 
@@ -84,6 +90,7 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 - [x] **Shell Quoting in sed Commands**
   - Discovered issue with special characters in double-quoted sed expressions
   - Learned proper escaping techniques for complex sed patterns
+  - Learned difference between single and double quotes with shell expansion
 - [x] **Package Discovery Methods**
   - Learned to use `dnf provides` to find which package provides a command
   - Used `dnf provides firewall-cmd` to discover firewalld package
@@ -103,12 +110,9 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Firewalld configured to allow log traffic
 - Network: Proxy configuration working on all servers
 - Database Replication: Active streaming replication from backend to ops
-- Logging: Central log server ready, client configuration pending
+- Logging: Centralized logging fully operational (all servers → tc-ops)
 
 ## Next Steps
-- [ ] Configure log forwarding from tc-frontend to tc-ops
-- [ ] Configure log forwarding from tc-backend to tc-ops
-- [ ] Test centralized logging with custom log entries
 - [ ] Configure tc-ops server for Prometheus/Grafana monitoring
 - [ ] Create custom systemd services
 - [ ] Configure automated backups on tc-ops
