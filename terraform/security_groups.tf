@@ -46,6 +46,15 @@ resource "aws_security_group" "frontend_sg" {
       description = "ICMP from internal subnet"
     }
 
+    # Node Exporter for monitoring
+    ingress {
+      from_port   = 9100
+      to_port     = 9100
+      protocol    = "tcp"
+      cidr_blocks = ["10.2.0.0/16"]
+      description = "Node Exporter from internal subnet"
+    }
+
     egress {
       from_port   = 0
       to_port     = 0
@@ -88,6 +97,33 @@ resource "aws_security_group" "frontend_sg" {
       protocol    = "icmp"
       cidr_blocks = ["10.2.0.0/16"]
       description = "ICMP within VPC"
+    }
+
+    # Prometheus monitoring ports
+    ingress {
+      from_port   = 9090
+      to_port     = 9090
+      protocol    = "tcp"
+      cidr_blocks = ["10.2.0.0/16"]
+      description = "Prometheus from internal subnet"
+    }
+
+    # Grafana dashboard
+    ingress {
+      from_port   = 3000
+      to_port     = 3000
+      protocol    = "tcp"
+      cidr_blocks = ["10.2.0.0/16"]
+      description = "Grafana from internal subnet"
+    }
+
+    # Node Exporter for monitoring
+    ingress {
+      from_port   = 9100
+      to_port     = 9100
+      protocol    = "tcp"
+      cidr_blocks = ["10.2.0.0/16"]
+      description = "Node Exporter from internal subnet"
     }
 
     egress {

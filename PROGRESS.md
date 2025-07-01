@@ -11,7 +11,7 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Created 3 EC2 instances: tc-frontend, tc-backend, and tc-ops
   - Configured security groups and networking
   - Server IPs:
-    - tc-frontend: 54.242.140.75 (public)
+    - tc-frontend: 54.83.121.206 (public)
     - tc-backend: 10.2.2.252 (private)
     - tc-ops: 10.2.2.97 (private)
 
@@ -135,6 +135,9 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Installed node_exporter on tc-backend (port 9100)
   - All exporters running and accessible
   - Created automated installation script for efficiency
+  - Resolved UFW lockout issue on frontend server
+  - Updated Terraform security groups to allow monitoring ports (9090, 9100, 3000)
+  - Disabled host-based firewalls in favor of AWS Security Groups
 
 ## Next Steps
 - [ ] Configure Prometheus to scrape all exporters
