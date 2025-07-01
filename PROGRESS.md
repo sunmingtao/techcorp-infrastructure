@@ -139,8 +139,24 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Updated Terraform security groups to allow monitoring ports (9090, 9100, 3000)
   - Disabled host-based firewalls in favor of AWS Security Groups
 
+- [x] **Configure Prometheus Scraping**
+  - Edited prometheus.yml to scrape all three node_exporters
+  - Added job configurations for tc-ops, tc-frontend, and tc-backend
+  - Verified all targets showing as UP in Prometheus
+- [x] **Set up Grafana Dashboards**
+  - Configured Prometheus as data source (http://127.0.0.1:9090)
+  - Created custom dashboard to verify metrics collection
+  - Successfully imported Node Exporter Full dashboard (ID 1860)
+  - Resolved proxy issues for private subnet deployment
+  - Full system metrics now visible for all servers
+
+## Current Infrastructure Summary
+- **Monitoring Stack**: Fully operational on tc-ops
+  - Prometheus scraping metrics from all servers every 15 seconds
+  - Node exporters running on all three servers
+  - Grafana dashboards providing real-time visibility
+  - All services configured for auto-start on boot
+
 ## Next Steps
-- [ ] Configure Prometheus to scrape all exporters
-- [ ] Set up Grafana dashboards
 - [ ] Configure automated backups on tc-ops
 - [ ] Begin Phase 3: Security Hardening
