@@ -112,8 +112,14 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
 - Database Replication: Active streaming replication from backend to ops
 - Logging: Centralized logging fully operational (all servers → tc-ops)
 
+#### Custom Services
+- [x] **Custom systemd service (disk-monitor)**
+  - Created disk monitoring script with threshold alerts
+  - Configured systemd service and timer for periodic execution
+  - Service runs every 5 minutes to check disk usage
+  - Logs sent to central log server via rsyslog
+
 ## Next Steps
 - [ ] Configure tc-ops server for Prometheus/Grafana monitoring
-- [ ] Create custom systemd services
 - [ ] Configure automated backups on tc-ops
 - [ ] Begin Phase 3: Security Hardening
