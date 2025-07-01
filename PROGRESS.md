@@ -119,7 +119,25 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Service runs every 5 minutes to check disk usage
   - Logs sent to central log server via rsyslog
 
+#### Monitoring Stack
+- [x] **Prometheus Installation on tc-ops**
+  - Installed Prometheus 2.48.0 manually
+  - Created prometheus user and systemd service
+  - Configured to run on port 9090
+  - Service enabled and running
+- [x] **Grafana Installation on tc-ops**
+  - Added Grafana repository and installed via dnf
+  - Running on port 3000 (default login: admin/admin)
+  - Service enabled and running
+- [x] **Node Exporter Deployment**
+  - Installed node_exporter on tc-ops (port 9100)
+  - Installed node_exporter on tc-frontend (port 9100)
+  - Installed node_exporter on tc-backend (port 9100)
+  - All exporters running and accessible
+  - Created automated installation script for efficiency
+
 ## Next Steps
-- [ ] Configure tc-ops server for Prometheus/Grafana monitoring
+- [ ] Configure Prometheus to scrape all exporters
+- [ ] Set up Grafana dashboards
 - [ ] Configure automated backups on tc-ops
 - [ ] Begin Phase 3: Security Hardening
