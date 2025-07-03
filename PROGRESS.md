@@ -206,8 +206,30 @@ All Phase 2 objectives successfully implemented:
   - Automatic retention policies implemented
   - Ready for cron scheduling
 
+## Phase 3: Security Hardening - IN PROGRESS
+
+### Completed Security Tasks
+
+#### SSH Hardening
+- [x] **SSH Key-Only Authentication on tc-ops**
+  - Disabled password authentication
+  - Disabled root login
+  - Set maximum authentication attempts to 3
+  - Configured idle timeout (300 seconds)
+  - Enforced SSH Protocol 2
+  - Created reusable hardening script
+
+#### Sudo Security Policies
+- [x] **Sudo Hardening on tc-ops**
+  - Set sudo password timeout to 5 minutes
+  - Enabled comprehensive sudo logging to /var/log/sudo.log
+  - Enforced environment reset and secure PATH
+  - Created svcadmin group for limited service restart privileges
+  - Configured password requirements (user's own password)
+  - Enabled sudo lecture for security awareness
+
 ## Next Steps - Phase 3: Security Hardening
-- [ ] SSH key authentication and sudo policies
+- [ ] Apply SSH and sudo hardening to tc-backend and tc-frontend
 - [ ] Firewall configuration (iptables/firewalld)
 - [ ] SELinux policies and file system ACLs
 - [ ] SSL certificate management
