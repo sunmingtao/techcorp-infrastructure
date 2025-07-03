@@ -228,6 +228,17 @@ All Phase 2 objectives successfully implemented:
   - Configured password requirements (user's own password)
   - Enabled sudo lecture for security awareness
 
+#### Firewall Hardening
+- [x] **Firewall Rules on tc-ops**
+  - Removed unnecessary default services (dhcpv6-client, cockpit)
+  - Implemented rich rules restricting access to internal VPC only
+  - Configured service-specific ports:
+    - SSH: Public access (port 22)
+    - Monitoring: Internal only (Prometheus 9090, Grafana 3000, Node Exporter 9100)
+    - Logging: Internal only (rsyslog 514/tcp and 514/udp)
+  - Enabled dropped packet logging for security monitoring
+  - Created backup of firewall configuration
+
 ## Next Steps - Phase 3: Security Hardening
 - [ ] Apply SSH and sudo hardening to tc-backend and tc-frontend
 - [ ] Firewall configuration (iptables/firewalld)
