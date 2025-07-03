@@ -173,6 +173,21 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Stores backups as compressed tar.gz files
   - Implemented 14-day retention policy
   - Handles permission requirements with sudo
+- [x] **Backup Scheduling**
+  - Configured cron jobs for automated backup execution
+  - PostgreSQL backups: Daily at 2:00 AM
+  - Configuration backups: Weekly on Sunday at 3:00 AM
+  - Log cleanup: Weekly maintenance to prevent disk space issues
+  - Verified crond service is running and enabled
+
+## Phase 2: Core Services - COMPLETED ✅
+All Phase 2 objectives successfully implemented:
+- Web infrastructure (nginx/Apache) ✅
+- PostgreSQL database with streaming replication ✅
+- Centralized logging system ✅
+- Custom systemd services and timers ✅
+- Prometheus/Grafana monitoring stack ✅
+- Automated backup system with scheduling ✅
 
 ## Current Infrastructure Summary
 - **Monitoring Stack**: Fully operational on tc-ops
@@ -186,7 +201,8 @@ This document tracks the progress of implementing the TechCorp Infrastructure Pr
   - Automatic retention policies implemented
   - Ready for cron scheduling
 
-## Next Steps
-- [ ] Schedule automated backups with cron
-- [ ] Test backup and restore procedures
-- [ ] Begin Phase 3: Security Hardening
+## Next Steps - Phase 3: Security Hardening
+- [ ] SSH key authentication and sudo policies
+- [ ] Firewall configuration (iptables/firewalld)
+- [ ] SELinux policies and file system ACLs
+- [ ] SSL certificate management
