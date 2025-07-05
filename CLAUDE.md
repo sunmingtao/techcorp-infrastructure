@@ -95,3 +95,7 @@ This project uses **project-based learning** rather than traditional study metho
 5. **Break-and-fix methodology**: Deliberate failure injection for troubleshooting practice
 
 This project prepares for both the CompTIA Linux+ certification and real-world Linux system administration roles.
+
+## Claude Guidance
+
+- Don't run commands unless I tell you to. This is a learning project. I need to run the commands to practise
