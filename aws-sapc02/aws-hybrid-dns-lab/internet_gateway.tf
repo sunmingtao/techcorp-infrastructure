@@ -1,0 +1,31 @@
+# ============================================================================
+# INTERNET GATEWAY & NAT GATEWAY (for public subnet access)
+# ============================================================================
+
+resource "aws_internet_gateway" "app_a_igw" {
+  vpc_id = aws_vpc.app_a.id
+
+  tags = {
+    Name    = "${var.project_name}-app-a-igw"
+    Project = var.project_name
+  }
+}
+
+resource "aws_route_table" "app_a_public_rt" {
+  vpc_id = aws_vpc.app_a.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.app_a_igw.id
+  }
+
+  tags = {
+    Name    = "${var.project_name}-app-a-public-rt"
+    Project = var.project_name
+  }
+}
+
+resource "aws_route_table_association" "app_a_public" {
+  subnet_id      = aws_subnet.app_a_public.id
+  route_table_id = aws_route_table.app_a_public_rt.id
+}
