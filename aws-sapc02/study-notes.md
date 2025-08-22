@@ -91,8 +91,6 @@ resource "aws_route_table_association" "app_b_private" {
 }
 ```
 
-
-```
 1 route table can be associated to multiple subnet
 
 
