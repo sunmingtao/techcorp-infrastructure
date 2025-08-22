@@ -93,4 +93,6 @@ resource "aws_route_table_association" "app_b_private" {
 
 1 route table can be associated to multiple subnet
 
+1 route53 can be attached to multiple VPCs
 
+1 security group can only belong to 1 VPC
