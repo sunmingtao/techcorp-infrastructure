@@ -1,2 +1,4 @@
 TF_LOG=DEBUG terraform plan
 terraform apply -auto-approve
+terraform output > lab_info.txt
+terraform taint aws_instance.onprem_simulator # to recreate the resource

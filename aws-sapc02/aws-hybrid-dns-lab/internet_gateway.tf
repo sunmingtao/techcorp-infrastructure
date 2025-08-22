@@ -19,10 +19,21 @@ resource "aws_route_table" "app_a_public_rt" {
     gateway_id = aws_internet_gateway.app_a_igw.id
   }
 
+  route {
+    cidr_block         = "10.3.0.0/16"  # To Shared Services VPC
+    transit_gateway_id = aws_ec2_transit_gateway.main.id
+  }
+
+  route {
+    cidr_block         = "10.5.0.0/16"  # To App VPC B
+    transit_gateway_id = aws_ec2_transit_gateway.main.id
+  }
   tags = {
     Name    = "${var.project_name}-app-a-public-rt"
     Project = var.project_name
   }
+
+	depends_on = [aws_ec2_transit_gateway_vpc_attachment.app_a]
 }
 
 resource "aws_route_table_association" "app_a_public" {
