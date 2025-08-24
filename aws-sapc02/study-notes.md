@@ -96,3 +96,7 @@ resource "aws_route_table_association" "app_b_private" {
 1 route53 can be attached to multiple VPCs
 
 1 security group can only belong to 1 VPC
+
+dynamodb, gateway api, and lambda function are all region specific.
+
+S3 is global. 
