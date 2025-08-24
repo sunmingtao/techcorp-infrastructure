@@ -99,4 +99,6 @@ resource "aws_route_table_association" "app_b_private" {
 
 dynamodb, gateway api, and lambda function are all region specific.
 
+lambda@Edge is global at CloudFront level. 
+
 S3 is global. 
