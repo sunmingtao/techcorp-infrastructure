@@ -102,3 +102,5 @@ dynamodb, gateway api, and lambda function are all region specific.
 lambda@Edge is global at CloudFront level. 
 
 S3 is global. 
+
+Organization root account is not restricted by any SCPs (Service Control Policies)
