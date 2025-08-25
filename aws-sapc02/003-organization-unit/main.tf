@@ -75,3 +75,21 @@ resource "aws_organizations_organizational_unit" "logging" {
   }
 }
 
+resource "aws_organizations_policy" "restricted_services" {
+  name        = "RestrictedServices"
+  description = "Deny list policy simulating production restrictions"
+  type        = "SERVICE_CONTROL_POLICY"
+
+  content = file("${path.module}/policies/restricted-services.json")
+
+  tags = {
+    PolicyType = "Restrictive"
+    Purpose    = "Production safety"
+  }
+}
+
+resource "aws_organizations_policy_attachment" "restricted_to_root" {
+  count     = var.attach_restrictive_to_root ? 1 : 0
+  policy_id = aws_organizations_policy.restricted_services.id
+  target_id = aws_organizations_organization.main.roots[0].id
+}
