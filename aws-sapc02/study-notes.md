@@ -104,3 +104,6 @@ lambda@Edge is global at CloudFront level.
 S3 is global. 
 
 Organization root account is not restricted by any SCPs (Service Control Policies)
+
+NLB (Network Load Balancer) doesn't support sticky session. 
+Ony ALB (Application Load Balancer) supports sticky session. 
