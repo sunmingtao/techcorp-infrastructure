@@ -109,3 +109,5 @@ NLB (Network Load Balancer) doesn't support sticky session.
 Ony ALB (Application Load Balancer) supports sticky session. 
 
 NAT gateway is in public subnet. The route table in private subnet connects to Internet through it. 
+
+lambda@Edge functions must be created in us-east-1
