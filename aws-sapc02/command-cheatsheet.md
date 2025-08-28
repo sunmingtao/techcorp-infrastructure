@@ -13,3 +13,4 @@ aws logs filter-log-events \
 
 `aws organizations describe-organization`
 
+aws ssm start-session --target <instance-id>
