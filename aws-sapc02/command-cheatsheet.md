@@ -13,4 +13,9 @@ aws logs filter-log-events \
 
 `aws organizations describe-organization`
 
-aws ssm start-session --target <instance-id>
+#### log in EC2 using session manager
+'aws ssm start-session --target <instance-id>'
+
+#### check user data script
+'aws ec2 describe-instance-attribute --instance-id <your_instance_id> --attribute userData'
+
