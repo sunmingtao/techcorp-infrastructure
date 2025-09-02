@@ -6,6 +6,7 @@ None
 
 #### Steps
 
+```
 Create a SNS topic
   Amazon SNS -> Create topic
   Type = Standard (FIFO doesn't support email as endpoint)
@@ -28,6 +29,7 @@ Create Route 53 health check
   Send a notificaton to the following SNS topic=Select an existing SNS Topic
   Select the topic
   Enter message contents
+```
 
 #### Verify
 
