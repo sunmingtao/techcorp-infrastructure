@@ -117,3 +117,5 @@ beanstalk is for deploying legacy war/jar file. can use spot/reserved instances 
 ECS+Fargate is for deploying container image. Serverless. no need to patch. 
 
 Route 53 cannot directly invoke lambda function. Instead it invokes lambda through SNS. 
+
+FIFO SNS Topic doesn't support Email as endpoint.
