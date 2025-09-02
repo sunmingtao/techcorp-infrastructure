@@ -111,3 +111,7 @@ Ony ALB (Application Load Balancer) supports sticky session.
 NAT gateway is in public subnet. The route table in private subnet connects to Internet through it. 
 
 lambda@Edge functions must be created in us-east-1
+
+beanstalk is for deploying legacy war/jar file. can use spot/reserved instances potentially cost effective. full os access -- can install packages.
+
+ECS+Fargate is for deploying container image. Serverless. no need to patch. 
