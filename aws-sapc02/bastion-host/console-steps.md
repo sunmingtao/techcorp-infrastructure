@@ -10,7 +10,7 @@ Create an EC2 instance in public subnet
 Create an EC2 instance in private subnet
 
 
-### Verify 1
+#### Verify 1
 
 Run command from local
 
@@ -20,7 +20,7 @@ Run command from public ec2 instance
 
 `ssh 10.1.2.5`
 
-### Verify 2
+#### Verify 2
 
 `vi ~/.ssh/config`
 
