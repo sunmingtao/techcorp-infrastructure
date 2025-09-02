@@ -6,14 +6,14 @@ None
 
 #### Steps
 
-Create a SNS topic
+**Create a SNS topic**
   - Amazon SNS -> Create topic
   - Type = Standard (FIFO doesn't support email as endpoint)
   - Create subscription
   - Protocol=Email
   - Confirm subscription in the email
 
-Create Route 53 health check
+**Create Route 53 health check**
   - Route 53 -> Health check -> Create health check
   - Resource=Endpoint
   - Specify endpoint by=Domain name
