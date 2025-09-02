@@ -36,3 +36,6 @@ aws logs filter-log-events \
 
 #### view api
 `aws apigatewayv2 get-api --api-id sxvv85do0a`
+
+#### generate aurora dsql access token
+`aws dsql generate-db-connect-auth-token --hostname eeabulk3q5pygqlpkc5hwlnli4.dsql.us-east-1.on.aws`
