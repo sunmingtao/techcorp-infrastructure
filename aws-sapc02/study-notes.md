@@ -119,3 +119,5 @@ ECS+Fargate is for deploying container image. Serverless. no need to patch.
 Route 53 cannot directly invoke lambda function. Instead it invokes lambda through SNS. 
 
 FIFO SNS Topic doesn't support Email as endpoint.
+
+EFS is good for shared file storage across EC2  instances, not good for storing static web contents, like videos. 
