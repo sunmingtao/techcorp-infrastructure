@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple Lambda deployment with CodeDeploy
+
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: MyLambda
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      AutoPublishAlias: live   # Alias (CodeDeploy shifts traffic here)
+      DeploymentPreference:
+        Type: Canary10Percent5Minutes   # Canary deployment strategy
+        Alarms:
+          - !Ref MyErrorAlarm           # Rollback if alarm triggers
+        Hooks:
+          PreTraffic: !Ref PreTrafficHook
+          PostTraffic: !Ref PostTrafficHook
+
+  # Example CloudWatch alarm (rollback trigger)
+  MyErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: "Alarm if Lambda errors exceed threshold"
+      MetricName: Errors
+      Namespace: AWS/Lambda
+      Statistic: Sum
+      Period: 60
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref MyLambdaFunction
+
+  # Pre-traffic validation function
+  PreTrafficHook:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: CodeDeployHook_PreTrafficValidation
+      Handler: pre.lambda_handler
+      Runtime: python3.9
+      CodeUri: .
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - codedeploy:PutLifecycleEventHookExecutionStatus
+              Resource: "*"
+
+  # Post-traffic validation function
+  PostTrafficHook:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: CodeDeployHook_PostTrafficValidation  # ADD THIS LINE
+      Handler: post.lambda_handler
+      Runtime: python3.9
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - codedeploy:PutLifecycleEventHookExecutionStatus
+              Resource: "*"
