@@ -39,3 +39,9 @@ aws logs filter-log-events \
 
 #### generate aurora dsql access token
 `aws dsql generate-db-connect-auth-token --hostname eeabulk3q5pygqlpkc5hwlnli4.dsql.us-east-1.on.aws`
+
+#### empty a bucket
+`aws s3 rm s3://devboard-frontend-627073650332 --recursive`
+
+#### delete an empty bucket
+`aws s3 rb s3://devboard-frontend-627073650332`
