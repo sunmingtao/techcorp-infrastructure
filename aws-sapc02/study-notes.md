@@ -4,6 +4,8 @@
 
 1 transit gateway can be attached to multiple VPCs. 
 
+transit gateway is regional. Does not provide cross regional connectivity. 
+
 **1 VPC can only have a transit gateway??**
 
 1 subnet can have only 1 route table
@@ -119,3 +121,5 @@ ECS+Fargate is for deploying container image. Serverless. no need to patch.
 Route 53 cannot directly invoke lambda function. Instead it invokes lambda through SNS. 
 
 FIFO SNS Topic doesn't support Email as endpoint.
+
+EFS is good for shared file storage across EC2  instances, not good for storing static web contents, like videos. 

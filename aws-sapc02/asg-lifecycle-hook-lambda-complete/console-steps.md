@@ -55,16 +55,16 @@ Create a EventBridge rule
 - Event type = Instance Launch and Terminate
 - Event type specification 1 -> Select "Specifi instance events"
 - Tick "EC2 instance-terminate Lifecycle Action"
-Json format:
+- Json format:
 ```
 {
   "source": ["aws.autoscaling"],
   "detail-type": ["EC2 Instance-terminate Lifecycle Action"]
 }
 ```
-Target 1 = AWS service
-Select a target  = Lambda function
-Select the lambda function created earlier
+- Target 1 = AWS service
+- Select a target  = Lambda function
+- Select the lambda function created earlier
 
 #### Verify
 
