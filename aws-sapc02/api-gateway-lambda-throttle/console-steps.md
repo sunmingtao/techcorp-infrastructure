@@ -60,3 +60,15 @@ for i in {1..10}; do curl -H "x-api-key: $API_KEY" "$INVOKE_URL"; done
 ```
 
 expected to see some `{"message":"Too Many Requests"}`
+
+Or run the command at backend, which can produce more `{"message":"Too Many Requests"}`
+
+```
+#!/bin/bash
+
+for i in {1..20}; do
+  curl -H "x-api-key: $API_KEY" "$INVOKE_URL" &
+done
+```
+
+
