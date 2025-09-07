@@ -14,11 +14,11 @@ if [[ -z "$PLAN_ID" ]]; then
   exit 1
 fi 
 
-echo Get the usage plan and delete API stages
+echo Get the usage plan $PLAN_ID and delete API stages
 aws apigateway get-usage-plan --usage-plan-id $PLAN_ID \
   --query 'apiStages[].{apiId:apiId,stage:stage}' --output text | while read apiId stage; do
     aws apigateway update-usage-plan \
-    --usage-plan-id g2pzkp \
+    --usage-plan-id $PLAN_ID \
     --patch-operations op=remove,path=/apiStages,value=${apiId}:${stage}
   done
 aws apigateway delete-usage-plan --usage-plan-id $PLAN_ID
