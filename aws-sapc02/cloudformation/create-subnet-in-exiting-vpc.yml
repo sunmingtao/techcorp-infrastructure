@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create a new subnet in an existing VPC
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: The ID of the existing VPC where the subnet will be created
+
+  SubnetCidrBlock:
+    Type: String
+    Default: 10.1.10.0/24
+    Description: CIDR block for the new subnet
+
+  AvailabilityZone:
+    Type: AWS::EC2::AvailabilityZone::Name
+    Description: Availability Zone for the subnet
+
+Resources:
+  NewSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      CidrBlock: !Ref SubnetCidrBlock
+      AvailabilityZone: !Ref AvailabilityZone
+      MapPublicIpOnLaunch: true
+
+Outputs:
+  SubnetId:
+    Description: The ID of the newly created subnet
+    Value: !Ref NewSubnet
+
