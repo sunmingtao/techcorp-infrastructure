@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$@" < 2 ]]; then
+if [[ $# -lt 2 ]]; then
   echo usage $0 security_group_name port
   exit 1
 fi

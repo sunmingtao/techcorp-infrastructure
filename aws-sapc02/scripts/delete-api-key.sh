@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$@" < 1 ]]; then
+if [[ $# -lt 1 ]]; then
   echo "usage $0 api_key"
   exit 1
 fi
