@@ -5,16 +5,12 @@ if [[ $# -lt 2 ]]; then
   exit 1
 fi
 
-if [[ -z "$VPC_NAME" ]]; then
-  echo environment varialbe VPC_NAME cannot be found
-  exit 1
-fi
+VPC_OUTPUT=$(get-vpc-id.sh)
+read CIDR_BLOCK VPC_ID <<< "$VPC_OUTPUT"
 
 SG_NAME=$1
 PORT=$2
 
-VPC_OUTPUT=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=$VPC_NAME" --query "Vpcs[].{VpcId:VpcId,CidrBlock:CidrBlock}" --output text)
-read CIDR_BLOCK VPC_ID <<< "$VPC_OUTPUT"
 
 echo "CIDR Block: $CIDR_BLOCK"
 echo "VPC ID: $VPC_ID"
